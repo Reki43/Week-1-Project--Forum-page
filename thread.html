@@ -9,7 +9,7 @@
 <body>
     <div class="top-bar">
         <h1>
-            My Forum
+            Forum
         </h1>
     </div>
     <div class="main"> 
@@ -31,31 +31,67 @@
         <div class="comments">
             <div class="comment">
                 <div class="top-comment">
-                    <p class="user">
-                        Aaron
-                    </p>
-                    <p class="comment-ts">
-                        05/01/2024
-                    </p>
-                </div>
-                <div class="comment-content">
-                    Comment text here
-                </div>
+                  
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script>
+        var id = window.location.search.slice(1);
+        var thread = threads.find(t => t.id == id); 
+        var header = document.querySelector('.header');
+        var headerHtml = `
+            <h4 class="title">
+                ${thread.title}
+            </h4>
+            <div class="bottom">
+                <p class="timestamp">
+                    ${new Date(thread.date).toLocaleString()}
+                </p>
+                <p class="comment-count">
+                    ${thread.comments.length} comments
+                </p>
             </div>
+        `
+        header.insertAdjacentHTML('beforeend', headerHtml)
+
+        function addComment(comment) {
+            var commentHtml = `
             <div class="comment">
                 <div class="top-comment">
                     <p class="user">
-                        Aaron
+                        ${comment.author}
                     </p>
                     <p class="comment-ts">
-                        05/01/2024
+                        ${new Date(comment.date).toLocaleString()}
                     </p>
                 </div>
                 <div class="comment-content">
-                    Comment text here
+                    ${comment.content}
                 </div>
-            </div>
-        </div>
-    </div>
+            `
+            comments.insertAdjacentHTML('beforeend', commentHtml);
+            
+
+        }
+
+        var comments = document.querySelector('.comments');
+        for (let comment of thread.comments) {
+            addComment(comment);
+            
+        }
+
+        var btn = document.querySelector('button');
+        btn.addEventListener('click', function() {
+            var txt = document.querySelector('textarea');
+            var comment = {
+                content: txt.value,
+                date: Date.now(),
+                author: 'Aaron'
+            }
+            addComment(comment);
+          
+        })
+    </script>
 </body>
 </html>
+

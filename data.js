@@ -1,9 +1,10 @@
 var threads = [
     {
+        id: 1,
         title: "Thread 1",
         author: "Aaron",
         date: Date.now(),
-        conntent: "Thread content",
+        content: "Thread content",
         comments: [
             {
                 author: "Jack",
@@ -11,17 +12,18 @@ var threads = [
                 content: "Hey there"
             },
             {
-                author: "Jack",
+                author: "Arthur",
                 date: Date.now(),
                 content: "Hey to you too"
             }
         ]
     },
     {
+        id: 2,
         title: "Thread 2",
         author: "Aaron",
         date: Date.now(),
-        conntent: "Thread content",
+        content: "Thread content",
         comments: [
             {
                 author: "Jack",
@@ -29,7 +31,7 @@ var threads = [
                 content: "Hey there"
             },
             {
-                author: "Jack",
+                author: "Arthur",
                 date: Date.now(),
                 content: "Hey to you too"
             }
